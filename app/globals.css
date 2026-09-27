@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #4C9484;
+  color: #0F1412;
+}
+
+body {
+  font-feature-settings: "ss01" on;
+}
+
+/* Faint row-lines motif — a quiet nod to the ERP data tables in her work */
+.row-texture {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(236, 234, 227, 0.035) 0px,
+    rgba(236, 234, 227, 0.035) 1px,
+    transparent 1px,
+    transparent 44px
+  );
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #4C9484;
+  outline-offset: 3px;
+}
+
+/* Scroll-reveal used by the Reveal component */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated underline for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background: #4C9484;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
